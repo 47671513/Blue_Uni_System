@@ -119,6 +119,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UniBlueDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UniBlueDBDataSet.vb">
+      <DependentUpon>UniBlueDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UniBlueDBDataSet1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniBlueDBDataSet1.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EnrolForm.resx">
@@ -161,6 +169,17 @@
     </None>
     <None Include="UniBlueDBDataSet.xss">
       <DependentUpon>UniBlueDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UniBlueDBDataSet1.xsc">
+      <DependentUpon>UniBlueDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="UniBlueDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UniBlueDBDataSet1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UniBlueDBDataSet1.xss">
+      <DependentUpon>UniBlueDBDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UniBlueDBDataSet1" targetNamespace="http://tempuri.org/UniBlueDBDataSet1.xsd" xmlns:mstns="http://tempuri.org/UniBlueDBDataSet1.xsd" xmlns="http://tempuri.org/UniBlueDBDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="UniBlueDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="UniBlueDBConnectionString (MySettings)" PropertyReference="ApplicationSettings.ICT3611_Assignment1.My.MySettings.GlobalReference.Default.UniBlueDBConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ModEnrolmentTableAdapter" GeneratorDataComponentClassName="ModEnrolmentTableAdapter" Name="ModEnrolment" UserDataComponentName="ModEnrolmentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UniBlueDBConnectionString (MySettings)" DbObjectName="ModEnrolment" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT S_StudentNumber FROM ModEnrolment</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="S_StudentNumber" DataSetColumn="S_StudentNumber" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ModulesTableAdapter" GeneratorDataComponentClassName="ModulesTableAdapter" Name="Modules" UserDataComponentName="ModulesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UniBlueDBConnectionString (MySettings)" DbObjectName="Modules" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ModuleCode, MTitle, Active, AYear, Semester FROM Modules</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ModuleCode" DataSetColumn="ModuleCode" />
+              <Mapping SourceColumn="MTitle" DataSetColumn="MTitle" />
+              <Mapping SourceColumn="Active" DataSetColumn="Active" />
+              <Mapping SourceColumn="AYear" DataSetColumn="AYear" />
+              <Mapping SourceColumn="Semester" DataSetColumn="Semester" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StudentTableAdapter" GeneratorDataComponentClassName="StudentTableAdapter" Name="Student" UserDataComponentName="StudentTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="UniBlueDBConnectionString (MySettings)" DbObjectName="Student" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StudentNumber FROM Student</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StudentNumber" DataSetColumn="StudentNumber" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UniBlueDBDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="UniBlueDBDataSet1" msprop:Generator_UserDSName="UniBlueDBDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ModEnrolment" msprop:Generator_TableClassName="ModEnrolmentDataTable" msprop:Generator_TableVarName="tableModEnrolment" msprop:Generator_TablePropName="ModEnrolment" msprop:Generator_RowDeletingName="ModEnrolmentRowDeleting" msprop:Generator_UserTableName="ModEnrolment" msprop:Generator_RowChangingName="ModEnrolmentRowChanging" msprop:Generator_RowEvHandlerName="ModEnrolmentRowChangeEventHandler" msprop:Generator_RowDeletedName="ModEnrolmentRowDeleted" msprop:Generator_RowEvArgName="ModEnrolmentRowChangeEvent" msprop:Generator_RowChangedName="ModEnrolmentRowChanged" msprop:Generator_RowClassName="ModEnrolmentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="S_StudentNumber" msprop:Generator_ColumnVarNameInTable="columnS_StudentNumber" msprop:Generator_ColumnPropNameInRow="S_StudentNumber" msprop:Generator_ColumnPropNameInTable="S_StudentNumberColumn" msprop:Generator_UserColumnName="S_StudentNumber" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Modules" msprop:Generator_TableClassName="ModulesDataTable" msprop:Generator_TableVarName="tableModules" msprop:Generator_TablePropName="Modules" msprop:Generator_RowDeletingName="ModulesRowDeleting" msprop:Generator_UserTableName="Modules" msprop:Generator_RowChangingName="ModulesRowChanging" msprop:Generator_RowEvHandlerName="ModulesRowChangeEventHandler" msprop:Generator_RowDeletedName="ModulesRowDeleted" msprop:Generator_RowEvArgName="ModulesRowChangeEvent" msprop:Generator_RowChangedName="ModulesRowChanged" msprop:Generator_RowClassName="ModulesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ModuleCode" msprop:Generator_ColumnVarNameInTable="columnModuleCode" msprop:Generator_ColumnPropNameInRow="ModuleCode" msprop:Generator_ColumnPropNameInTable="ModuleCodeColumn" msprop:Generator_UserColumnName="ModuleCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MTitle" msprop:Generator_ColumnVarNameInTable="columnMTitle" msprop:Generator_ColumnPropNameInRow="MTitle" msprop:Generator_ColumnPropNameInTable="MTitleColumn" msprop:Generator_UserColumnName="MTitle" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Active" msprop:Generator_ColumnVarNameInTable="columnActive" msprop:Generator_ColumnPropNameInRow="Active" msprop:Generator_ColumnPropNameInTable="ActiveColumn" msprop:Generator_UserColumnName="Active" type="xs:boolean" minOccurs="0" />
+              <xs:element name="AYear" msprop:Generator_ColumnVarNameInTable="columnAYear" msprop:Generator_ColumnPropNameInRow="AYear" msprop:Generator_ColumnPropNameInTable="AYearColumn" msprop:Generator_UserColumnName="AYear" type="xs:int" minOccurs="0" />
+              <xs:element name="Semester" msprop:Generator_ColumnVarNameInTable="columnSemester" msprop:Generator_ColumnPropNameInRow="Semester" msprop:Generator_ColumnPropNameInTable="SemesterColumn" msprop:Generator_UserColumnName="Semester" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Student" msprop:Generator_TableClassName="StudentDataTable" msprop:Generator_TableVarName="tableStudent" msprop:Generator_TablePropName="Student" msprop:Generator_RowDeletingName="StudentRowDeleting" msprop:Generator_UserTableName="Student" msprop:Generator_RowChangingName="StudentRowChanging" msprop:Generator_RowEvHandlerName="StudentRowChangeEventHandler" msprop:Generator_RowDeletedName="StudentRowDeleted" msprop:Generator_RowEvArgName="StudentRowChangeEvent" msprop:Generator_RowChangedName="StudentRowChanged" msprop:Generator_RowClassName="StudentRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StudentNumber" msprop:Generator_ColumnVarNameInTable="columnStudentNumber" msprop:Generator_ColumnPropNameInRow="StudentNumber" msprop:Generator_ColumnPropNameInTable="StudentNumberColumn" msprop:Generator_UserColumnName="StudentNumber" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="StudentModEnrolment" msdata:parent="Student" msdata:child="ModEnrolment" msdata:parentkey="StudentNumber" msdata:childkey="S_StudentNumber" msprop:Generator_UserChildTable="ModEnrolment" msprop:Generator_ChildPropName="GetModEnrolmentRows" msprop:Generator_ParentPropName="StudentRow" msprop:Generator_UserRelationName="StudentModEnrolment" msprop:Generator_RelationVarName="relationStudentModEnrolment" msprop:Generator_UserParentTable="Student" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

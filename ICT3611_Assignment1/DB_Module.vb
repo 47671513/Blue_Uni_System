@@ -320,8 +320,8 @@ Module DB_Module
                 Dim _sSelectCmd = New OleDbCommand("SELECT * FROM Student WHERE StudentNumber = " & i_iStudentNum, _oNewCon)
                 Dim _SeqDataRder As OleDb.OleDbDataReader = _sSelectCmd.ExecuteReader()
                 _SeqDataRder.Read()
-                o_sStudSurname = Int(_SeqDataRder.Item("Surname"))
-                o_sInitials = Int(_SeqDataRder.Item("Initials"))
+                o_sStudSurname = _SeqDataRder.Item("Surname")
+                o_sInitials = _SeqDataRder.Item("Initials")
                 o_sError = "OK"
                 _oNewCon.Close()
 

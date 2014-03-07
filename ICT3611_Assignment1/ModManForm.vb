@@ -211,7 +211,7 @@
     End Sub
 
 
-    Private Sub ModuleDataGridView_CellContentClick_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles ModuleDataGridView.CellClick
+    Private Sub ModuleDataGridView_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles ModuleDataGridView.CellClick
 
         Dim _iRow As Integer = 0
         Try
