@@ -127,6 +127,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UniBlueDBDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UniBlueDBDataSet1.vb">
+      <DependentUpon>UniBlueDBDataSet1.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EnrolForm.resx">

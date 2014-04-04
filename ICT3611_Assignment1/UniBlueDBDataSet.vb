@@ -2,5 +2,7 @@
 End Class
 
 Namespace UniBlueDBDataSetTableAdapters
-    
+    
+
+
 End Namespace

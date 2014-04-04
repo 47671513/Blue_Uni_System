@@ -28,12 +28,6 @@ Partial Class ModManForm
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ModuleDataGridView = New System.Windows.Forms.DataGridView()
-        Me.ModuleIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ModuleCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MTitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ActiveDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.AYearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Semester = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ModulesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.UniBlueDBDataSetBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.UniBlueDBDataSet = New ICT3611_Assignment1.UniBlueDBDataSet()
@@ -59,6 +53,16 @@ Partial Class ModManForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.UniBlueDBDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ModulesTableAdapter = New ICT3611_Assignment1.UniBlueDBDataSetTableAdapters.ModulesTableAdapter()
+        Me.ModulesBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ModulesBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ModulesBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ModulesBindingSource4 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ModuleIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModuleCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MTitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ActiveDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AYearDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SemesterDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.ModuleDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,6 +73,10 @@ Partial Class ModManForm
         Me.Panel5.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.UniBlueDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ModulesBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ModulesBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ModulesBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ModulesBindingSource4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel3
@@ -106,8 +114,8 @@ Partial Class ModManForm
         Me.ModuleDataGridView.AllowUserToDeleteRows = False
         Me.ModuleDataGridView.AutoGenerateColumns = False
         Me.ModuleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ModuleDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModuleIDDataGridViewTextBoxColumn, Me.ModuleCodeDataGridViewTextBoxColumn, Me.MTitleDataGridViewTextBoxColumn, Me.ActiveDataGridViewCheckBoxColumn, Me.AYearDataGridViewTextBoxColumn, Me.Semester})
-        Me.ModuleDataGridView.DataSource = Me.ModulesBindingSource
+        Me.ModuleDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModuleIDDataGridViewTextBoxColumn, Me.ModuleCodeDataGridViewTextBoxColumn, Me.MTitleDataGridViewTextBoxColumn, Me.ActiveDataGridViewCheckBoxColumn, Me.AYearDataGridViewTextBoxColumn, Me.SemesterDataGridViewTextBoxColumn})
+        Me.ModuleDataGridView.DataSource = Me.ModulesBindingSource4
         Me.ModuleDataGridView.Location = New System.Drawing.Point(3, 37)
         Me.ModuleDataGridView.MultiSelect = False
         Me.ModuleDataGridView.Name = "ModuleDataGridView"
@@ -115,58 +123,6 @@ Partial Class ModManForm
         Me.ModuleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.ModuleDataGridView.Size = New System.Drawing.Size(548, 321)
         Me.ModuleDataGridView.TabIndex = 2
-        '
-        'ModuleIDDataGridViewTextBoxColumn
-        '
-        Me.ModuleIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.ModuleIDDataGridViewTextBoxColumn.DataPropertyName = "ModuleID"
-        Me.ModuleIDDataGridViewTextBoxColumn.HeaderText = "ModuleID"
-        Me.ModuleIDDataGridViewTextBoxColumn.Name = "ModuleIDDataGridViewTextBoxColumn"
-        Me.ModuleIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ModuleIDDataGridViewTextBoxColumn.Width = 78
-        '
-        'ModuleCodeDataGridViewTextBoxColumn
-        '
-        Me.ModuleCodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.ModuleCodeDataGridViewTextBoxColumn.DataPropertyName = "ModuleCode"
-        Me.ModuleCodeDataGridViewTextBoxColumn.HeaderText = "Code"
-        Me.ModuleCodeDataGridViewTextBoxColumn.Name = "ModuleCodeDataGridViewTextBoxColumn"
-        Me.ModuleCodeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ModuleCodeDataGridViewTextBoxColumn.Width = 57
-        '
-        'MTitleDataGridViewTextBoxColumn
-        '
-        Me.MTitleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.MTitleDataGridViewTextBoxColumn.DataPropertyName = "MTitle"
-        Me.MTitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.MTitleDataGridViewTextBoxColumn.Name = "MTitleDataGridViewTextBoxColumn"
-        Me.MTitleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MTitleDataGridViewTextBoxColumn.Width = 52
-        '
-        'ActiveDataGridViewCheckBoxColumn
-        '
-        Me.ActiveDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.ActiveDataGridViewCheckBoxColumn.DataPropertyName = "Active"
-        Me.ActiveDataGridViewCheckBoxColumn.HeaderText = "Active"
-        Me.ActiveDataGridViewCheckBoxColumn.Name = "ActiveDataGridViewCheckBoxColumn"
-        Me.ActiveDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.ActiveDataGridViewCheckBoxColumn.Width = 43
-        '
-        'AYearDataGridViewTextBoxColumn
-        '
-        Me.AYearDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.AYearDataGridViewTextBoxColumn.DataPropertyName = "AYear"
-        Me.AYearDataGridViewTextBoxColumn.HeaderText = "Year"
-        Me.AYearDataGridViewTextBoxColumn.Name = "AYearDataGridViewTextBoxColumn"
-        Me.AYearDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AYearDataGridViewTextBoxColumn.Width = 54
-        '
-        'Semester
-        '
-        Me.Semester.DataPropertyName = "Semester"
-        Me.Semester.HeaderText = "Semester"
-        Me.Semester.Name = "Semester"
-        Me.Semester.ReadOnly = True
         '
         'ModulesBindingSource
         '
@@ -395,6 +351,68 @@ Partial Class ModManForm
         '
         Me.ModulesTableAdapter.ClearBeforeFill = True
         '
+        'ModulesBindingSource1
+        '
+        Me.ModulesBindingSource1.DataMember = "Modules"
+        Me.ModulesBindingSource1.DataSource = Me.UniBlueDBDataSetBindingSource1
+        '
+        'ModulesBindingSource2
+        '
+        Me.ModulesBindingSource2.DataMember = "Modules"
+        Me.ModulesBindingSource2.DataSource = Me.UniBlueDBDataSetBindingSource
+        '
+        'ModulesBindingSource3
+        '
+        Me.ModulesBindingSource3.DataMember = "Modules"
+        Me.ModulesBindingSource3.DataSource = Me.UniBlueDBDataSetBindingSource
+        '
+        'ModulesBindingSource4
+        '
+        Me.ModulesBindingSource4.DataMember = "Modules"
+        Me.ModulesBindingSource4.DataSource = Me.UniBlueDBDataSet
+        '
+        'ModuleIDDataGridViewTextBoxColumn
+        '
+        Me.ModuleIDDataGridViewTextBoxColumn.DataPropertyName = "ModuleID"
+        Me.ModuleIDDataGridViewTextBoxColumn.HeaderText = "ModuleID"
+        Me.ModuleIDDataGridViewTextBoxColumn.Name = "ModuleIDDataGridViewTextBoxColumn"
+        Me.ModuleIDDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ModuleCodeDataGridViewTextBoxColumn
+        '
+        Me.ModuleCodeDataGridViewTextBoxColumn.DataPropertyName = "ModuleCode"
+        Me.ModuleCodeDataGridViewTextBoxColumn.HeaderText = "ModuleCode"
+        Me.ModuleCodeDataGridViewTextBoxColumn.Name = "ModuleCodeDataGridViewTextBoxColumn"
+        Me.ModuleCodeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MTitleDataGridViewTextBoxColumn
+        '
+        Me.MTitleDataGridViewTextBoxColumn.DataPropertyName = "MTitle"
+        Me.MTitleDataGridViewTextBoxColumn.HeaderText = "MTitle"
+        Me.MTitleDataGridViewTextBoxColumn.Name = "MTitleDataGridViewTextBoxColumn"
+        Me.MTitleDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ActiveDataGridViewCheckBoxColumn
+        '
+        Me.ActiveDataGridViewCheckBoxColumn.DataPropertyName = "Active"
+        Me.ActiveDataGridViewCheckBoxColumn.HeaderText = "Active"
+        Me.ActiveDataGridViewCheckBoxColumn.Name = "ActiveDataGridViewCheckBoxColumn"
+        Me.ActiveDataGridViewCheckBoxColumn.ReadOnly = True
+        '
+        'AYearDataGridViewTextBoxColumn
+        '
+        Me.AYearDataGridViewTextBoxColumn.DataPropertyName = "AYear"
+        Me.AYearDataGridViewTextBoxColumn.HeaderText = "AYear"
+        Me.AYearDataGridViewTextBoxColumn.Name = "AYearDataGridViewTextBoxColumn"
+        Me.AYearDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SemesterDataGridViewTextBoxColumn
+        '
+        Me.SemesterDataGridViewTextBoxColumn.DataPropertyName = "Semester"
+        Me.SemesterDataGridViewTextBoxColumn.HeaderText = "Semester"
+        Me.SemesterDataGridViewTextBoxColumn.Name = "SemesterDataGridViewTextBoxColumn"
+        Me.SemesterDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'ModManForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -421,6 +439,10 @@ Partial Class ModManForm
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.UniBlueDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ModulesBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ModulesBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ModulesBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ModulesBindingSource4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -453,10 +475,14 @@ Partial Class ModManForm
     Friend WithEvents UniBlueDBDataSetBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ModulesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ModulesTableAdapter As ICT3611_Assignment1.UniBlueDBDataSetTableAdapters.ModulesTableAdapter
+    Friend WithEvents ModulesBindingSource1 As System.Windows.Forms.BindingSource
+    Friend WithEvents ModulesBindingSource2 As System.Windows.Forms.BindingSource
     Friend WithEvents ModuleIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ModuleCodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MTitleDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ActiveDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents AYearDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Semester As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SemesterDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ModulesBindingSource4 As System.Windows.Forms.BindingSource
+    Friend WithEvents ModulesBindingSource3 As System.Windows.Forms.BindingSource
 End Class

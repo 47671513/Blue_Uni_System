@@ -140,11 +140,13 @@
 
 
     Private Sub RegisterForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'UniBlueDBDataSet.Modules1' table. You can move, or remove it, as needed.
+        Me.Modules1TableAdapter.Fill(Me.UniBlueDBDataSet.Modules1)
 
 
         '  Me.EnroledModulesTableAdapter.Fill(Me.UniBlueDBDataSet.EnroledModules)
         'TODO: This line of code loads data into the 'UniBlueDBDataSet.Modules1' table. You can move, or remove it, as needed.
-        Me.Modules1TableAdapter.Fill(Me.UniBlueDBDataSet.Modules1)
+        'Me.Mo.Fill(Me.UniBlueDBDataSet.Modules)
 
 
     End Sub
@@ -165,4 +167,19 @@
 
     End Sub
 
+
+    Private Sub EnrolModButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnrolModButton.Click
+
+        If ModuleCodeTextBox.Text = "" Or YearComboBox.SelectedIndex <= -1 Or SemesterComboBox.SelectedIndex <= -1 Then
+
+            MessageBox.Show("Module Data Not Valid or Incomplate", "Check Input")
+
+        Else
+
+
+
+        End If
+
+
+    End Sub
 End Class
