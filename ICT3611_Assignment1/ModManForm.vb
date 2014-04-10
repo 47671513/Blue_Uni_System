@@ -25,6 +25,9 @@
         Dim _sModCode As String
         Dim _sModTitle As String
 
+        'Dim bool1 As Boolean = System.IO.File.Exists("z:\try.exe")
+        'MessageBox.Show("The result is :" & bool1)
+
 
         Dim _bActive As Boolean
         Dim _iYear As Integer
@@ -64,7 +67,7 @@
 
             End If
 
-            DB_Module.CheckModCode(_sModCode, _sError)      ' Call Function to check Code availability 
+            DB_Module.CheckModCode(_sModCode, _sError)      ' Call Procedure to check Code availability 
 
             If _sError = "OK" Then
 

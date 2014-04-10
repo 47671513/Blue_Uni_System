@@ -2,7 +2,11 @@
 
     'Module : Number Creation and Check Functios
 
-    'Function creates new Student Number and returns as Int
+    Public Variable1 As String
+
+
+    'Procedure creates new Student Number and returns as Int
+
     Public Sub CreateStudentNumber(ByVal i_sNextStudentNum As String, ByRef o_iStudentNumber As Integer, ByRef o_sError As String)
 
         Dim _sYearPart As String
@@ -44,7 +48,7 @@
 
     End Sub
 
-    'Function that checks if Student Number is valid
+    'Procedure that checks if Student Number is valid
     Public Sub CheckStudnum(ByVal i_iStudentnum As Integer, ByRef io_sError As String)
 
         Try
@@ -69,7 +73,7 @@
 
     End Sub
 
-    'Function For Checking Module Code Validity
+    'Procedure For Checking Module Code Validity
 
 
 End Module

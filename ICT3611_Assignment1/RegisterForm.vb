@@ -20,7 +20,7 @@
             If _sError = "OK" Then
 
                 _sError = ""   ' Reset Error code 
-                DB_Module.GetStudInfo(_iStudentNum, _sSurname, _sInitials, _sError) ' call function to get student info
+                DB_Module.GetStudInfo(_iStudentNum, _sSurname, _sInitials, _sError) ' call Procedure to get student info
 
                 If _sError = "OK" Then
                     ' display student info 
@@ -83,8 +83,10 @@
         SemesterComboBox.Items.Clear()
         YearComboBox.Items.Clear()
 
-        SemesterComboBox.SelectedText = ""
-        YearComboBox.SelectedText = ""
+        SemesterComboBox.SelectedIndex = -1
+        YearComboBox.SelectedIndex = -1
+        SemesterComboBox.Text = "Please Select Semester"
+        YearComboBox.Text = "Please Select Year"
 
         Try
 
@@ -119,8 +121,6 @@
                         'SemesterComboBox.SelectedText = "Not Available"
 
                 End Select
-
-
 
 
             End If
@@ -170,15 +170,16 @@
 
     Private Sub EnrolModButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnrolModButton.Click
 
-        If ModuleCodeTextBox.Text = "" Or YearComboBox.SelectedIndex <= -1 Or SemesterComboBox.SelectedIndex <= -1 Then
+        If StudentNumTextBox.Text = "" Then
+
+            MsgBox("First select a valid student number")
+
+        ElseIf ModuleCodeTextBox.Text = "" Or YearComboBox.SelectedIndex <= -1 Or SemesterComboBox.SelectedIndex <= -1 Then
 
             MessageBox.Show("Module Data Not Valid or Incomplate", "Check Input")
 
-        Else
-
-
-
         End If
+
 
 
     End Sub

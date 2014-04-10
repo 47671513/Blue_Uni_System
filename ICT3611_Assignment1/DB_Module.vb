@@ -2,7 +2,7 @@
 
 Module DB_Module
 
-    'Module for all Db related Functions
+    'Module for all Db related Procedures
 
     'Create a connection to the DB
     Public Sub CreateDBCon(ByRef o_oDBcon As OleDbConnection, ByRef o_sDBError As String)
@@ -58,7 +58,7 @@ Module DB_Module
 
     End Sub
 
-    ' Function to add new record for student enrolemt to db
+    ' Procedure to add new record for student enrolemt to db
     Public Sub EnrolInsert(ByVal i_iStudentID As Integer, ByVal i_sTitle As String, ByVal i_sInitials As String, ByVal i_sSurname As String, ByVal i_sAddress As String, ByVal i_sBirthDate As String, ByRef o_sError As String)
 
         Dim _sError As String = ""
@@ -101,7 +101,7 @@ Module DB_Module
 
     End Sub
 
-    'Function to Update Student record with given StudentNumber from DB 
+    'Procedure to Update Student record with given StudentNumber from DB 
     Public Sub UpdateStudent(ByVal i_iStudentID As Integer, ByVal i_sTitle As String, ByVal i_sInitials As String, ByVal i_sSurname As String, ByVal i_sAddress As String, ByVal i_sBirthDate As String, ByRef o_sError As String)
 
         Dim _sError As String = ""
@@ -143,7 +143,7 @@ Module DB_Module
 
     End Sub
 
-    'Function to Delete Student record with given StudentNumber from DB  
+    'Procedure to Delete Student record with given StudentNumber from DB  
     Public Sub DeleteRecord(ByVal i_iStudentID As Integer, ByRef o_sError As String)
 
         'Function to Delete Record with Selected StudentNumber
@@ -189,7 +189,7 @@ Module DB_Module
 
     End Sub
 
-    'Function to check if Module code already exists in DB
+    'Procedure to check if Module code already exists in DB
     Public Sub CheckModCode(ByRef i_sModCode As String, ByRef o_sError As String)
 
         Dim _oNewCon As OleDbConnection = Nothing
@@ -227,7 +227,7 @@ Module DB_Module
 
     End Sub
 
-    ' Function to add new record for student enrolemt to db
+    ' Procedure to add new record for student enrolemt to db
     Public Sub ModuleInsert(ByVal i_iModuleCode As String, ByVal i_sTitle As String, ByVal i_bActive As Boolean, ByVal i_iYear As Integer, ByVal i_sSemester As String, ByRef o_sError As String)
 
         Dim _sError As String = ""
@@ -268,7 +268,7 @@ Module DB_Module
 
     End Sub
 
-    ' function to Update Activation Status
+    ' Procedure to Update Activation Status
     Public Sub ModActivateUpdate(ByVal i_iModuleID As Integer, ByVal i_bActive As Boolean, ByVal i_iYear As Integer, ByVal i_Semester As String, ByRef o_sError As String)
 
         Dim _sError As String = ""
@@ -341,6 +341,95 @@ Module DB_Module
             o_sError = "Failed to get Student information"
 
         End If
+
+    End Sub
+
+    'Procedure to cofirm module Registration Duplicate 
+    Sub ModRegDuplCheck(ByVal i_sStudentNum As String, ByVal i_sModCode As String, ByRef o_sError As String)
+
+        Dim _oNewCon As OleDbConnection = Nothing
+        Dim _sError As String = ""
+
+        DB_Module.CreateDBCon(_oNewCon, _sError)
+        If _sError = "OK" Then
+
+            Try
+
+                _oNewCon.Open()
+
+                'Check if the selected module was alreay regitered for this student 
+                Dim _sSelectReg = "SELECT ModEnrolment.S_StudentNumber, Modules.ModuleCode FROM Modules INNER JOIN ModEnrolment ON Modules.ModuleID = ModEnrolment.M_ModID WHERE (((ModEnrolment.S_StudentNumber)=" & i_sStudentNum & ")) AND Modules.ModuleCode = '" & i_sModCode & "'"
+                Dim _cSelectCommand As OleDbCommand = New OleDbCommand(_sSelectReg, _oNewCon)
+                Dim _iResult = _cSelectCommand.ExecuteNonQuery()
+                _oNewCon.Close()
+
+                If _iResult > 0 Then
+                    o_sError = "Already Enrolled For This Module"
+                Else
+                    o_sError = "OK"     'Selected module can be chosen
+                End If
+
+            Catch ex As Exception
+
+                o_sError = "Error Getting Data"
+                _oNewCon.Close()
+
+            End Try
+        Else
+
+            o_sError = "Error connecting to DB"
+
+        End If
+
+    End Sub
+
+    'Procedure to cofirm module Registration Date validity for student
+    Sub ModRegDateCheck(ByVal i_sModCode As String, ByVal i_sAYear As String, ByRef i_sSemester As String, ByRef o_sError As String)
+
+        Dim _oNewCon As OleDbConnection = Nothing
+        Dim _sError As String = ""
+
+        DB_Module.CreateDBCon(_oNewCon, _sError)
+        If _sError = "OK" Then
+
+            Try
+
+                _oNewCon.Open() ' Open DB connection
+
+                'Get check if selected start year is greater or equal to module start date 
+                Dim _sSelectReg = "SELECT ModuleCode FROM Modules WHERE AYear >= " & i_sAYear & ""
+                Dim _cSelectCommand As OleDbCommand = New OleDbCommand(_sSelectReg, _oNewCon)
+                Dim _iResult = _cSelectCommand.ExecuteNonQuery()
+                _oNewCon.Close()
+
+                If _iResult > 0 Then    ' Module start year sufficient, check semester
+
+                    If i_sAYear = Date.Now.Year Then    'If the selected start year is this one, only second semester can be selected
+                        If i_sSemester = "Second" Then
+                            o_sError = "OK"                 'Selected module can be chosen
+                        Else
+                            o_sError = "You Must Enroll At Least 6 Months Ahead"
+                        End If
+
+                    Else
+                        o_sError = "You Must Enroll At Least 6 Months Ahead"
+                    End If
+
+                End If
+
+
+            Catch ex As Exception
+
+                o_sError = "Error Getting Data"
+                _oNewCon.Close()
+
+            End Try
+        Else
+
+            o_sError = "Error connecting to DB"
+
+        End If
+
 
     End Sub
 
