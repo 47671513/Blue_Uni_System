@@ -1,7 +1,7 @@
 ﻿Public Class RegisterForm
 
 
-    Private Sub GetDataButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetDataButton.Click
+    Private Sub GetDataButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         Dim _iStudentNum As Integer
         Dim _sError As String = ""
@@ -140,13 +140,16 @@
 
 
     Private Sub RegisterForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'TODO: This line of code loads data into the 'UniBlueDBDataSet.Student' table. You can move, or remove it, as needed.
+        Me.StudentTableAdapter.Fill(Me.UniBlueDBDataSet.Student)
         'TODO: This line of code loads data into the 'UniBlueDBDataSet.Modules1' table. You can move, or remove it, as needed.
         Me.Modules1TableAdapter.Fill(Me.UniBlueDBDataSet.Modules1)
 
 
-        '  Me.EnroledModulesTableAdapter.Fill(Me.UniBlueDBDataSet.EnroledModules)
-        'TODO: This line of code loads data into the 'UniBlueDBDataSet.Modules1' table. You can move, or remove it, as needed.
-        'Me.Mo.Fill(Me.UniBlueDBDataSet.Modules)
+        If StudentNumTextBox.SelectedIndex <> -1 Then       ' if the Combobox item is selected update Enrolled Module Grid
+            StudentNumTextBox_SelectedIndexChanged(sender, e)
+        End If
 
 
     End Sub
@@ -193,10 +196,23 @@
 
             If _sError = "OK" Then
 
-                _sError = ""
+                _sError = ""    'Reset Error Variable
                 ModRegDateCheck(_sModCode, _sAYear, _sSemester, _sError)
 
                 If _sError = "OK" Then
+
+                    _sError = ""    'Reset Error Variable
+                    ModRegInsert(_sModCode, _sStudNum, _sError)
+
+                    If _sError = "OK" Then
+
+
+                    Else        ' if insert Fails
+                        MessageBox.Show(_sError, "Module Add Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Exit Sub
+
+                    End If
+
 
                 Else
 
@@ -214,8 +230,78 @@
 
         End If
 
+    End Sub
+
+    Private Sub StudentNumTextBox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StudentNumTextBox.SelectedIndexChanged
+
+        Dim _iStudentNum As Integer
+        Dim _sError As String = ""
+        Dim _sInitials As String = ""
+        Dim _sSurname As String = ""
 
 
+        If StudentNumTextBox.Text = "" Or StudentNumTextBox.Text = "0" Then
+            MessageBox.Show("Invalid Student Number", "Input Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+
+            _iStudentNum = Convert.ToInt32(StudentNumTextBox.Text)
+
+            Numbers_Module.CheckStudnum(_iStudentNum, _sError)
+
+            If _sError = "OK" Then
+
+                _sError = ""   ' Reset Error code 
+                DB_Module.GetStudInfo(_iStudentNum, _sSurname, _sInitials, _sError) ' call Procedure to get student info
+
+                If _sError = "OK" Then
+                    ' display student info 
+                    InitialsTextBox.Text = _sInitials
+                    SurnameTextBox.Text = _sSurname
+
+                    'Get All the Modules the Student is currently enroled in and display
+
+                    Dim _iStudentNumber = Convert.ToInt32(StudentNumTextBox.Text)
+                    Dim Enrol_Con = New OleDb.OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & My.Computer.FileSystem.CurrentDirectory & "\UniBlueDB.accdb;Persist Security Info=False")
+                    Dim Enroled_DS As New DataSet
+                    Dim Enroled_Adapter As OleDb.OleDbDataAdapter
+
+                    Try
+
+                        Enrol_Con.Open()
+                        Enroled_Adapter = New OleDb.OleDbDataAdapter("SELECT ModEnrolment.ModEnID, ModEnrolment.S_StudentNumber, Modules.ModuleCode, Modules.AYear, Modules.Semester FROM Modules INNER JOIN ModEnrolment ON Modules.[ModuleID] = ModEnrolment.[M_ModID] WHERE ModEnrolment.S_StudentNumber =" & _iStudentNumber, Enrol_Con)
+
+                        'Enroled_Adapter = New OleDb.OleDbDataAdapter("SELECT ModEnrolment.S_StudentNumber, Modules.ModuleCode, Modules.MTitle, Modules.AYear, Modules.Semester FROM ModEnrolment INNER JOIN Modules ON ModEnrolment.M_ModID = Modules.ModuleID INNER JOIN Student ON ModEnrolment.S_StudentNumber = Student.StudentNumber WHERE ModEnrolment.S_StudentNumber =" & _iStudentNumber, Enrol_Con)
+                        Enroled_Adapter.Fill(Enroled_DS)
+                        Enrol_Con.Close()
+                        'WHERE ModEnrolment.S_StudentNumber =" & _iStudentNumber
+
+                    Catch
+
+                        MessageBox.Show("Error getting Students enrolled Modules")
+                        Enrol_Con.Close()
+
+                    End Try
+
+                    EnroledModsDataGridView.DataSource = Enroled_DS.Tables(0)
+                    EnroledModsDataGridView.Refresh()
+
+
+
+                Else
+
+                    MessageBox.Show("Could not get Sudent Info", "Failed getting info", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                End If
+
+            Else
+
+                MessageBox.Show("Invalid Student Number", "Input Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            End If
+
+        End If
 
     End Sub
+
+
 End Class

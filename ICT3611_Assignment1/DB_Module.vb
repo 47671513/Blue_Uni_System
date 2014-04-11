@@ -414,7 +414,7 @@ Module DB_Module
     End Sub
 
     'Procedure to insert new Registration info into ModEnrolment Table 
-    Sub ModRegInsert(ByVal i_sModCode As String, ByRef o_iMCode As String, ByRef i_sSemester As String, ByRef o_sError As String)
+    Sub ModRegInsert(ByRef o_iMCode As String, ByRef i_sStudentNum As String, ByRef o_sError As String)
 
         Dim _oNewCon As OleDbConnection = Nothing
         Dim _sError As String = ""
@@ -429,7 +429,7 @@ Module DB_Module
                 _oNewCon.Open() ' Open DB connection
 
                 ' Get Module ID for selected Module 
-                Dim _cCommand As New OleDbCommand("SELECT ModuleID FROM Modules WHERE ModuleCode = '" & i_sModCode & "' ", _oNewCon)
+                Dim _cCommand As New OleDbCommand("SELECT ModuleID FROM Modules WHERE ModuleCode = '" & o_iMCode & "' ", _oNewCon)
                 Dim _cDataReader As OleDbDataReader = _cCommand.ExecuteReader()
                 _cDataReader.Read()
 
@@ -440,11 +440,25 @@ Module DB_Module
                 If o_iMCode <> 0 Then   ' check a valid code was received
 
 
+                    _oNewCon.Open() ' open connection 
+                    'create Insert command and execute 
+
+                    Dim _sInsert As String = "INSERT INTO ModEnroll (S_StudentNumber, M_ModuleID ) VALUES ('" & i_sStudentNum & "','" & o_iMCode & "')"
+                    Dim _cInsertCmd As OleDbCommand = New OleDbCommand(_sInsert, _oNewCon)
+                    Dim _iResult As Integer = _cInsertCmd.ExecuteNonQuery
+                    _oNewCon.Close()
+
+                    'Check Rows affected count - if > 0 then insert was sucess 
+                    If _iResult > 0 Then
+                        o_sError = "OK"
+                    Else
+                        _sError = "Error occured : Module Could Not Be Added"
+                    End If
 
                 End If
 
             Else
-
+                o_sError = "Database Error Occured"
 
             End If
 
@@ -452,7 +466,7 @@ Module DB_Module
         Catch ex As Exception
 
             o_sError = "Database Error Occured"
-            '_oNewCon.Close()
+            _oNewCon.Close()
 
         End Try
 

@@ -30,17 +30,25 @@ Partial Class RegisterForm
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ModuleDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Modules1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Modules1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.UniBlueDBDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.UniBlueDBDataSet = New ICT3611_Assignment1.UniBlueDBDataSet()
+        Me.Modules1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EnroledModulesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.StudentNumTextBox = New System.Windows.Forms.ComboBox()
+        Me.StudentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SemesterComboBox = New System.Windows.Forms.ComboBox()
         Me.SurnameTextBox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.GetDataButton = New System.Windows.Forms.Button()
         Me.UpdateButton = New System.Windows.Forms.Button()
         Me.YearComboBox = New System.Windows.Forms.ComboBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
@@ -53,31 +61,25 @@ Partial Class RegisterForm
         Me.ModuleCodeTextBox = New System.Windows.Forms.TextBox()
         Me.EnrolModButton = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.StudentNumTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.EnroledModulesBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Modules1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Modules1TableAdapter = New ICT3611_Assignment1.UniBlueDBDataSetTableAdapters.Modules1TableAdapter()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StudentTableAdapter = New ICT3611_Assignment1.UniBlueDBDataSetTableAdapters.StudentTableAdapter()
         Me.Panel3.SuspendLayout()
         CType(Me.EnroledModsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.ModuleDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Modules1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Modules1BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UniBlueDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UniBlueDBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Modules1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EnroledModulesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.EnroledModulesBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Modules1BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel3
@@ -96,19 +98,19 @@ Partial Class RegisterForm
         Me.EnroledModsDataGridView.AllowUserToAddRows = False
         Me.EnroledModsDataGridView.AllowUserToDeleteRows = False
         Me.EnroledModsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.EnroledModsDataGridView.Location = New System.Drawing.Point(6, 256)
+        Me.EnroledModsDataGridView.Location = New System.Drawing.Point(6, 270)
         Me.EnroledModsDataGridView.MultiSelect = False
         Me.EnroledModsDataGridView.Name = "EnroledModsDataGridView"
         Me.EnroledModsDataGridView.ReadOnly = True
         Me.EnroledModsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.EnroledModsDataGridView.Size = New System.Drawing.Size(548, 151)
+        Me.EnroledModsDataGridView.Size = New System.Drawing.Size(548, 137)
         Me.EnroledModsDataGridView.TabIndex = 19
         '
         'Panel6
         '
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel6.Controls.Add(Me.Label10)
-        Me.Panel6.Location = New System.Drawing.Point(3, 224)
+        Me.Panel6.Location = New System.Drawing.Point(6, 238)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(548, 26)
         Me.Panel6.TabIndex = 18
@@ -119,9 +121,9 @@ Partial Class RegisterForm
         Me.Label10.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(164, 3)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(251, 18)
+        Me.Label10.Size = New System.Drawing.Size(305, 18)
         Me.Label10.TabIndex = 5
-        Me.Label10.Text = "Enrolled Modules For this Student"
+        Me.Label10.Text = "Enrolled Modules For this Student (max 6)"
         '
         'Panel4
         '
@@ -136,11 +138,11 @@ Partial Class RegisterForm
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(228, 3)
+        Me.Label1.Location = New System.Drawing.Point(58, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(117, 18)
+        Me.Label1.Size = New System.Drawing.Size(450, 18)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Active Modules"
+        Me.Label1.Text = "Select Module for Registration  (only active modules available)"
         '
         'ModuleDataGridView
         '
@@ -155,8 +157,55 @@ Partial Class RegisterForm
         Me.ModuleDataGridView.Name = "ModuleDataGridView"
         Me.ModuleDataGridView.ReadOnly = True
         Me.ModuleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.ModuleDataGridView.Size = New System.Drawing.Size(548, 177)
+        Me.ModuleDataGridView.Size = New System.Drawing.Size(548, 154)
         Me.ModuleDataGridView.TabIndex = 2
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ModuleID"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ModuleID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ModuleCode"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ModuleCode"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "MTitle"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "MTitle"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Active"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Active"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "AYear"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "AYear"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Semester"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Semester"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'Modules1BindingSource1
+        '
+        Me.Modules1BindingSource1.DataMember = "Modules1"
+        Me.Modules1BindingSource1.DataSource = Me.UniBlueDBDataSetBindingSource
         '
         'UniBlueDBDataSetBindingSource
         '
@@ -181,11 +230,11 @@ Partial Class RegisterForm
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.StudentNumTextBox)
         Me.Panel1.Controls.Add(Me.SemesterComboBox)
         Me.Panel1.Controls.Add(Me.SurnameTextBox)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.GetDataButton)
         Me.Panel1.Controls.Add(Me.UpdateButton)
         Me.Panel1.Controls.Add(Me.YearComboBox)
         Me.Panel1.Controls.Add(Me.Panel5)
@@ -197,12 +246,27 @@ Partial Class RegisterForm
         Me.Panel1.Controls.Add(Me.ModuleCodeTextBox)
         Me.Panel1.Controls.Add(Me.EnrolModButton)
         Me.Panel1.Controls.Add(Me.Label11)
-        Me.Panel1.Controls.Add(Me.StudentNumTextBox)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(361, 412)
         Me.Panel1.TabIndex = 10
+        '
+        'StudentNumTextBox
+        '
+        Me.StudentNumTextBox.DataSource = Me.StudentBindingSource
+        Me.StudentNumTextBox.DisplayMember = "StudentNumber"
+        Me.StudentNumTextBox.FormattingEnabled = True
+        Me.StudentNumTextBox.Location = New System.Drawing.Point(91, 48)
+        Me.StudentNumTextBox.Name = "StudentNumTextBox"
+        Me.StudentNumTextBox.Size = New System.Drawing.Size(226, 21)
+        Me.StudentNumTextBox.TabIndex = 40
+        Me.StudentNumTextBox.ValueMember = "StudentNumber"
+        '
+        'StudentBindingSource
+        '
+        Me.StudentBindingSource.DataMember = "Student"
+        Me.StudentBindingSource.DataSource = Me.UniBlueDBDataSetBindingSource
         '
         'SemesterComboBox
         '
@@ -219,7 +283,7 @@ Partial Class RegisterForm
         Me.SurnameTextBox.Location = New System.Drawing.Point(91, 119)
         Me.SurnameTextBox.Name = "SurnameTextBox"
         Me.SurnameTextBox.ReadOnly = True
-        Me.SurnameTextBox.Size = New System.Drawing.Size(138, 20)
+        Me.SurnameTextBox.Size = New System.Drawing.Size(226, 20)
         Me.SurnameTextBox.TabIndex = 31
         '
         'Label5
@@ -241,15 +305,6 @@ Partial Class RegisterForm
         Me.Label6.Size = New System.Drawing.Size(112, 16)
         Me.Label6.TabIndex = 38
         Me.Label6.Text = "Select Semester"
-        '
-        'GetDataButton
-        '
-        Me.GetDataButton.Location = New System.Drawing.Point(242, 46)
-        Me.GetDataButton.Name = "GetDataButton"
-        Me.GetDataButton.Size = New System.Drawing.Size(75, 23)
-        Me.GetDataButton.TabIndex = 29
-        Me.GetDataButton.Text = "Get Data"
-        Me.GetDataButton.UseVisualStyleBackColor = True
         '
         'UpdateButton
         '
@@ -276,7 +331,7 @@ Partial Class RegisterForm
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Controls.Add(Me.Label9)
-        Me.Panel5.Location = New System.Drawing.Point(3, 158)
+        Me.Panel5.Location = New System.Drawing.Point(3, 163)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(351, 26)
         Me.Panel5.TabIndex = 28
@@ -296,7 +351,7 @@ Partial Class RegisterForm
         Me.InitialsTextBox.Location = New System.Drawing.Point(91, 84)
         Me.InitialsTextBox.Name = "InitialsTextBox"
         Me.InitialsTextBox.ReadOnly = True
-        Me.InitialsTextBox.Size = New System.Drawing.Size(138, 20)
+        Me.InitialsTextBox.Size = New System.Drawing.Size(226, 20)
         Me.InitialsTextBox.TabIndex = 22
         '
         'Label4
@@ -366,13 +421,6 @@ Partial Class RegisterForm
         Me.Label11.TabIndex = 32
         Me.Label11.Text = "Module Code"
         '
-        'StudentNumTextBox
-        '
-        Me.StudentNumTextBox.Location = New System.Drawing.Point(91, 48)
-        Me.StudentNumTextBox.Name = "StudentNumTextBox"
-        Me.StudentNumTextBox.Size = New System.Drawing.Size(138, 20)
-        Me.StudentNumTextBox.TabIndex = 12
-        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -383,56 +431,13 @@ Partial Class RegisterForm
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Student #"
         '
-        'Modules1BindingSource1
-        '
-        Me.Modules1BindingSource1.DataMember = "Modules1"
-        Me.Modules1BindingSource1.DataSource = Me.UniBlueDBDataSetBindingSource
-        '
         'Modules1TableAdapter
         '
         Me.Modules1TableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn1
+        'StudentTableAdapter
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ModuleID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ModuleID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ModuleCode"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "ModuleCode"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "MTitle"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "MTitle"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "Active"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Active"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "AYear"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "AYear"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Semester"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Semester"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.StudentTableAdapter.ClearBeforeFill = True
         '
         'RegisterForm
         '
@@ -453,18 +458,19 @@ Partial Class RegisterForm
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.ModuleDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Modules1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Modules1BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UniBlueDBDataSetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UniBlueDBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Modules1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EnroledModulesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.StudentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.EnroledModulesBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Modules1BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -482,12 +488,10 @@ Partial Class RegisterForm
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents EnrolModButton As System.Windows.Forms.Button
-    Friend WithEvents StudentNumTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents EnroledModsDataGridView As System.Windows.Forms.DataGridView
-    Friend WithEvents GetDataButton As System.Windows.Forms.Button
     Friend WithEvents SurnameTextBox As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents SemesterComboBox As System.Windows.Forms.ComboBox
@@ -518,4 +522,7 @@ Partial Class RegisterForm
     Friend WithEvents DataGridViewCheckBoxColumn1 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents StudentNumTextBox As System.Windows.Forms.ComboBox
+    Friend WithEvents StudentBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents StudentTableAdapter As ICT3611_Assignment1.UniBlueDBDataSetTableAdapters.StudentTableAdapter
 End Class
