@@ -183,6 +183,7 @@
             MessageBox.Show("Module Data Not Valid or Incomplate", "Check Input")
             Exit Sub
 
+
         Else
 
             Dim _sError As String = ""
@@ -206,6 +207,8 @@
 
                     If _sError = "OK" Then
 
+                        MessageBox.Show("Module Added Sucessfully", "Module Add OK", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        RegisterForm_Load(sender, e)   ' Call form load to refresh
 
                     Else        ' if insert Fails
                         MessageBox.Show(_sError, "Module Add Error", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -239,10 +242,15 @@
         Dim _sInitials As String = ""
         Dim _sSurname As String = ""
 
+        ' make sure there is data in the combobox
+        'StudentNumTextBox.SelectedIndex = 0
+        '_iStudentNum = Int(StudentNumTextBox.SelectedItem.ToString())
 
         If StudentNumTextBox.Text = "" Or StudentNumTextBox.Text = "0" Then
-            MessageBox.Show("Invalid Student Number", "Input Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '  MessageBox.Show("Invalid Student Number", "Input Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            _iStudentNum = 1
         Else
+
 
             _iStudentNum = Convert.ToInt32(StudentNumTextBox.Text)
 

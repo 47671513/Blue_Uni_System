@@ -418,7 +418,7 @@ Module DB_Module
 
         Dim _oNewCon As OleDbConnection = Nothing
         Dim _sError As String = ""
-        o_iMCode = 0                '    Set Code to zero for error checking 
+        Dim o_iModCode As Integer = 0                '    Set Code to zero for error checking 
 
         Try
 
@@ -433,17 +433,17 @@ Module DB_Module
                 Dim _cDataReader As OleDbDataReader = _cCommand.ExecuteReader()
                 _cDataReader.Read()
 
-                o_iMCode = Convert.ToInt16(_cDataReader.Item("ModuleID"))
+                o_iModCode = Convert.ToInt16(_cDataReader.Item("ModuleID"))
 
                 _oNewCon.Close()
 
-                If o_iMCode <> 0 Then   ' check a valid code was received
+                If o_iModCode <> 0 Then   ' check a valid code was received
 
 
                     _oNewCon.Open() ' open connection 
                     'create Insert command and execute 
 
-                    Dim _sInsert As String = "INSERT INTO ModEnroll (S_StudentNumber, M_ModuleID ) VALUES ('" & i_sStudentNum & "','" & o_iMCode & "')"
+                    Dim _sInsert As String = "INSERT INTO ModEnrolment (S_StudentNumber, M_ModID ) VALUES (" & Int(i_sStudentNum) & "," & o_iModCode & ")"
                     Dim _cInsertCmd As OleDbCommand = New OleDbCommand(_sInsert, _oNewCon)
                     Dim _iResult As Integer = _cInsertCmd.ExecuteNonQuery
                     _oNewCon.Close()
