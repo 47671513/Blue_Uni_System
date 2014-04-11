@@ -386,49 +386,75 @@ Module DB_Module
     'Procedure to cofirm module Registration Date validity for student
     Sub ModRegDateCheck(ByVal i_sModCode As String, ByVal i_sAYear As String, ByRef i_sSemester As String, ByRef o_sError As String)
 
-        Dim _oNewCon As OleDbConnection = Nothing
+
         Dim _sError As String = ""
 
-        DB_Module.CreateDBCon(_oNewCon, _sError)
-        If _sError = "OK" Then
+        Try
 
-            Try
+            If i_sAYear = Date.Now.Year And i_sSemester = "Second" Then    'If the selected start year is this one, only second semester can be selected
+
+                o_sError = "OK"                 'Selected module can be chosen
+
+            ElseIf i_sAYear > Date.Now.Year Then
+
+                o_sError = "OK"                 'Any Semester can be chosen for folowing Yeat 
+
+            Else
+                o_sError = "You Must Enroll At Least 6 Months Ahead"
+            End If
+
+
+        Catch ex As Exception
+
+            o_sError = "Error Getting Data"
+
+        End Try
+
+
+    End Sub
+
+    'Procedure to insert new Registration info into ModEnrolment Table 
+    Sub ModRegInsert(ByVal i_sModCode As String, ByRef o_iMCode As String, ByRef i_sSemester As String, ByRef o_sError As String)
+
+        Dim _oNewCon As OleDbConnection = Nothing
+        Dim _sError As String = ""
+        o_iMCode = 0                '    Set Code to zero for error checking 
+
+        Try
+
+            DB_Module.CreateDBCon(_oNewCon, _sError)
+
+            If _sError = "OK" Then
 
                 _oNewCon.Open() ' Open DB connection
 
-                'Get check if selected start year is greater or equal to module start date 
-                Dim _sSelectReg = "SELECT ModuleCode FROM Modules WHERE AYear >= " & i_sAYear & ""
-                Dim _cSelectCommand As OleDbCommand = New OleDbCommand(_sSelectReg, _oNewCon)
-                Dim _iResult = _cSelectCommand.ExecuteNonQuery()
+                ' Get Module ID for selected Module 
+                Dim _cCommand As New OleDbCommand("SELECT ModuleID FROM Modules WHERE ModuleCode = '" & i_sModCode & "' ", _oNewCon)
+                Dim _cDataReader As OleDbDataReader = _cCommand.ExecuteReader()
+                _cDataReader.Read()
+
+                o_iMCode = Convert.ToInt16(_cDataReader.Item("ModuleID"))
+
                 _oNewCon.Close()
 
-                If _iResult > 0 Then    ' Module start year sufficient, check semester
+                If o_iMCode <> 0 Then   ' check a valid code was received
 
-                    If i_sAYear = Date.Now.Year Then    'If the selected start year is this one, only second semester can be selected
-                        If i_sSemester = "Second" Then
-                            o_sError = "OK"                 'Selected module can be chosen
-                        Else
-                            o_sError = "You Must Enroll At Least 6 Months Ahead"
-                        End If
 
-                    Else
-                        o_sError = "You Must Enroll At Least 6 Months Ahead"
-                    End If
 
                 End If
 
+            Else
 
-            Catch ex As Exception
 
-                o_sError = "Error Getting Data"
-                _oNewCon.Close()
+            End If
 
-            End Try
-        Else
 
-            o_sError = "Error connecting to DB"
+        Catch ex As Exception
 
-        End If
+            o_sError = "Database Error Occured"
+            '_oNewCon.Close()
+
+        End Try
 
 
     End Sub

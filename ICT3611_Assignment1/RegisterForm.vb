@@ -170,6 +170,7 @@
 
     Private Sub EnrolModButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnrolModButton.Click
 
+
         If StudentNumTextBox.Text = "" Then
 
             MsgBox("First select a valid student number")
@@ -177,8 +178,42 @@
         ElseIf ModuleCodeTextBox.Text = "" Or YearComboBox.SelectedIndex <= -1 Or SemesterComboBox.SelectedIndex <= -1 Then
 
             MessageBox.Show("Module Data Not Valid or Incomplate", "Check Input")
+            Exit Sub
+
+        Else
+
+            Dim _sError As String = ""
+            Dim _sModCode As String = ModuleCodeTextBox.Text
+            Dim _sStudNum As String = StudentNumTextBox.Text
+            Dim _sSemester As String = SemesterComboBox.SelectedItem.ToString
+            Dim _sAYear As String = YearComboBox.SelectedItem.ToString
+
+
+            ModRegDuplCheck(_sStudNum, _sModCode, _sError)
+
+            If _sError = "OK" Then
+
+                _sError = ""
+                ModRegDateCheck(_sModCode, _sAYear, _sSemester, _sError)
+
+                If _sError = "OK" Then
+
+                Else
+
+                    MessageBox.Show(_sError, "Code Date Problem", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Exit Sub
+
+                End If
+
+            Else
+
+                MessageBox.Show(_sError, "Code Check Problem", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Exit Sub
+
+            End If
 
         End If
+
 
 
 
